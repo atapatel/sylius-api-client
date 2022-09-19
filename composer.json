@@ -1,5 +1,5 @@
 {
-    "name": "friendsofapi/sylius-api-client",
+    "name": "atapatel/sylius-api-client",
     "description": "A client for Sylius APIs",
     "license": "MIT",
     "keywords": ["api", "sylius"],
