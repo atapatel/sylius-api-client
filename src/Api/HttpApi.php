@@ -14,7 +14,7 @@ use FAPI\Sylius\Exception\DomainException;
 use FAPI\Sylius\Hydrator\Hydrator;
 use FAPI\Sylius\Hydrator\NoopHydrator;
 use FAPI\Sylius\RequestBuilder;
-use Http\Client\HttpClient;
+use Psr\Http\Client\ClientInterface;
 use Psr\Http\Message\ResponseInterface;
 
 /**
@@ -23,7 +23,7 @@ use Psr\Http\Message\ResponseInterface;
 abstract class HttpApi
 {
     /**
-     * @var HttpClient
+     * @var ClientInterface
      */
     protected $httpClient;
 
@@ -37,7 +37,7 @@ abstract class HttpApi
      */
     protected $requestBuilder;
 
-    public function __construct(HttpClient $httpClient, Hydrator $hydrator, RequestBuilder $requestBuilder)
+    public function __construct(ClientInterface $httpClient, Hydrator $hydrator, RequestBuilder $requestBuilder)
     {
         $this->httpClient = $httpClient;
         $this->requestBuilder = $requestBuilder;

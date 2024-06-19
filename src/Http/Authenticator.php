@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace FAPI\Sylius\Http;
 
 use FAPI\Sylius\RequestBuilder;
-use Http\Client\HttpClient;
+use Psr\Http\Client\ClientInterface;
 
 /**
  * Class that gets access tokens.
@@ -22,7 +22,7 @@ final class Authenticator
     private $requestBuilder;
 
     /**
-     * @var HttpClient
+     * @var ClientInterface
      */
     private $httpClient;
 
@@ -41,7 +41,7 @@ final class Authenticator
      */
     private $clientSecret;
 
-    public function __construct(RequestBuilder $requestBuilder, HttpClient $httpClient, string $clientId, string $clientSecret)
+    public function __construct(RequestBuilder $requestBuilder, ClientInterface $httpClient, string $clientId, string $clientSecret)
     {
         $this->requestBuilder = $requestBuilder;
         $this->httpClient = $httpClient;

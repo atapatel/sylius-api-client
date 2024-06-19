@@ -11,10 +11,10 @@ namespace FAPI\Sylius\Http;
 
 use Http\Client\Common\Plugin;
 use Http\Client\Common\PluginClient;
-use Http\Client\HttpClient;
-use Http\Discovery\HttpClientDiscovery;
-use Http\Discovery\UriFactoryDiscovery;
-use Http\Message\UriFactory;
+use Http\Discovery\Psr17FactoryDiscovery;
+use Http\Discovery\Psr18ClientDiscovery;
+use Psr\Http\Client\ClientInterface;
+use Psr\Http\Message\UriFactoryInterface;
 
 /**
  * Configure an HTTP client.
@@ -64,10 +64,10 @@ final class ClientConfigurator
      */
     private $configurationModified = true;
 
-    public function __construct(HttpClient $httpClient = null, UriFactory $uriFactory = null)
+    public function __construct(ClientInterface $httpClient = null, UriFactoryInterface $uriFactory = null)
     {
-        $this->httpClient = $httpClient ?? HttpClientDiscovery::find();
-        $this->uriFactory = $uriFactory ?? UriFactoryDiscovery::find();
+        $this->httpClient = $httpClient ?? Psr18ClientDiscovery::find();
+        $this->uriFactory = $uriFactory ?? Psr17FactoryDiscovery::findUriFactory();
     }
 
     public function createConfiguredClient(): HttpClient
