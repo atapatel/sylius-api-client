@@ -70,7 +70,7 @@ final class ClientConfigurator
         $this->uriFactory = $uriFactory ?? Psr17FactoryDiscovery::findUriFactory();
     }
 
-    public function createConfiguredClient(): HttpClient
+    public function createConfiguredClient(): ClientInterface
     {
         if ($this->configurationModified) {
             $this->configurationModified = false;

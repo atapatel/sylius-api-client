@@ -6,11 +6,12 @@ namespace FAPI\Sylius\tests\Model\Product;
 
 use FAPI\Sylius\Model\Product\Variant;
 use FAPI\Sylius\tests\Model\BaseModelTest;
-
+use FAPI\Sylius\SyliusClient;
 class VariantTest extends BaseModelTest
 {
     public function testCreate()
     {
+
         $json =
             <<<'JSON'
 {
